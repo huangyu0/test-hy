@@ -1,16 +1,15 @@
 package com.hy.test;
 
+import com.opensymphony.xwork2.ActionSupport;
+
 import java.util.List;
 import java.util.Map;
 
-import com.opensymphony.xwork2.Action;
-import com.opensymphony.xwork2.ActionSupport;
-
-public class TestAction extends ActionSupport{
+public class TestAction extends ActionSupport {
 
     private static final long serialVersionUID = 1L;
 
-    private List<Map<String,String>> list;
+    private List<Map<String, String>> list;
 
     private Integer id;
 
@@ -25,19 +24,21 @@ public class TestAction extends ActionSupport{
     }
 
 
-    public String queryFiledDate(){
-        System.out.println("FiledCodes字段名--------------------"+filedCodes);
-        System.out.println("TableCode表名--------------------"+tableCode);
+    public String queryFiledDate() {
+        System.out.println("FiledCodes字段名--------------------" + filedCodes);
+        System.out.println("TableCode表名--------------------" + tableCode);
         Demo01 demo01 = new Demo01();
+
+        // 解析成数组
 
         list = demo01.queryFiledDate(filedCodes, tableCode);
         return "json";
     }
 
-    public String queryFiledByTable(){
-        System.out.println("ID--------------------"+id);
+    public String queryFiledByTable() {
+        System.out.println("ID--------------------" + id);
         Demo01 demo01 = new Demo01();
-        if(id == null) {
+        if (id == null) {
             return null;
         }
         list = demo01.showField(id);
@@ -54,6 +55,7 @@ public class TestAction extends ActionSupport{
     public void setId(Integer id) {
         this.id = id;
     }
+
     public void getId(Integer id) {
         this.id = id;
     }
@@ -64,10 +66,6 @@ public class TestAction extends ActionSupport{
 
     public void setFiledIds(Integer filedIds) {
         this.filedIds = filedIds;
-    }
-
-    public String getFiledCodes() {
-        return filedCodes;
     }
 
     public void setFiledCodes(String filedCodes) {
@@ -81,7 +79,6 @@ public class TestAction extends ActionSupport{
     public void setTableCode(String tableCode) {
         this.tableCode = tableCode;
     }
-
 
 
 }
